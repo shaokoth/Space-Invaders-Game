@@ -415,3 +415,10 @@ function invaderFiring() {
         y: parseInt(invader.element.style.top) + 50
     });
 }
+
+function togglePause() {
+    gameState.isPaused = true;
+    clearInterval(timer_death);
+    showPauseMenu();
+    if (!gameState.isPaused) gameLoop();
+}
