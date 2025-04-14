@@ -353,3 +353,15 @@ function Continue(menu) {
     gameState.ecran.removeChild(menu);
     timer_death = setInterval(updateGameState, 1000);
 }
+
+function resetGame() {
+    gameState.isPaused = false;
+    gameState.lives = INITIAL_LIVES;
+    gameState.score = 0;
+    gameState.countdown = GAME_DURATION;
+    updateLivesDisplay();
+    document.getElementById('scoreValue').textContent = '0';
+    document.getElementById('countdownValue').textContent = GAME_DURATION;
+    gameLoop();
+}
+
