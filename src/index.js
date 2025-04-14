@@ -347,3 +347,9 @@ function showPauseMenu() {
 
     gameState.ecran.appendChild(menu);
 }
+
+function Continue(menu) {
+    gameState.isPaused = false;
+    gameState.ecran.removeChild(menu);
+    timer_death = setInterval(updateGameState, 1000);
+}
