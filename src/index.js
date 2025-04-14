@@ -49,3 +49,11 @@ function init() {
     updateGameState();
     gameLoop();
 }
+
+function setupPlayer() {
+    gameState.player.style.position = 'absolute';
+    gameState.player.style.display = "block";
+    gameState.playerX = (gameState.ecran.offsetWidth - gameState.player.offsetWidth) / 2;
+    gameState.playerY = gameState.ecran.offsetHeight - gameState.player.offsetHeight;
+    positionPlayer();
+}
