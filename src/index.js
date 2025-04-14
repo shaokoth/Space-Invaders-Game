@@ -149,3 +149,32 @@ function createInvaderElement(row, col) {
     `;
     return invader;
 }
+
+function updateInvaders(timestamp) {
+    if (timestamp - gameState.lastInvaderFireTime > INVADER_FIRE_INTERVAL) {
+        invaderFiring();
+        gameState.lastInvaderFireTime = timestamp;
+    }
+
+    let shouldReverse = false;
+    gameState.invaders.forEach(invader => {
+        const newX = invader.x + 1 * gameState.invaderDirection;
+        invader.x = newX;
+        invader.element.style.left = `${newX}px`;
+
+        if (newX > gameState.ecran.offsetWidth - 40 || newX < 10) {
+            shouldReverse = true;
+        }
+    });
+
+    if (shouldReverse) {
+        gameState.invaderDirection *= -1;
+        gameState.invaders.forEach(invader => {
+            invader.y += 10;
+            invader.element.style.top = `${invader.y}px`;
+            if (invader.y > gameState.ecran.offsetHeight - 100) {
+                endGame(false);
+            }
+        });
+    }
+}
