@@ -370,3 +370,24 @@ function positionPlayer() {
     gameState.player.style.top = `${gameState.playerY}px`;
 }
 
+function fireBullet() {
+    if (Date.now() - gameState.lastFireTime < 600) return;
+
+    const bullet = document.createElement('div');
+    bullet.style.cssText = `
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: red;
+        left: ${gameState.playerX + gameState.player.offsetWidth / 2 - 3}px;
+        top: ${gameState.playerY - 15}px;
+    `;
+
+    gameState.ecran.appendChild(bullet);
+    gameState.bullets.push({
+        element: bullet,
+        y: gameState.playerY - 15
+    });
+    gameState.lastFireTime = Date.now();
+}
