@@ -306,3 +306,44 @@ function showGameMenu(isVictory) {
 
     gameState.ecran.appendChild(menu);
 }
+
+function showPauseMenu() {
+    const menu = document.createElement('div');
+    menu.id = 'pauseMenu';
+    menu.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        z-index: 1000;
+    `;
+
+    menu.innerHTML = `
+        <div style="background-color: transparent; border-radius: 8px; border: 2px solid rgb(255, 255, 255); height: 30%; width: 30%">
+        <div style="border: 2px solid rgb(255, 255, 255); padding: 0;">
+            <h2 style="">Pause Game</h2>
+        </div>
+        <br><br>
+        <button style="cursor: pointer; border-radius: 8px; padding: 6px" id="restartButton">Restart</button>
+        <button style="cursor: pointer; border-radius: 8px; padding: 6px" id="continueButton">Continue</button>
+        </div>
+    `;
+
+    menu.querySelector('#restartButton').addEventListener('click', () => {
+        location.reload();
+        resetGame();
+    });
+    menu.querySelector('#continueButton').addEventListener('click', () => {
+        Continue(menu);
+    });
+
+    gameState.ecran.appendChild(menu);
+}
