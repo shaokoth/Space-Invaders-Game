@@ -57,3 +57,12 @@ function setupPlayer() {
     gameState.playerY = gameState.ecran.offsetHeight - gameState.player.offsetHeight;
     positionPlayer();
 }
+
+function setupHeader() {
+    const header = document.createElement('div');
+    header.id = "header";
+    header.style.height = "40px";
+    header.style.top = "10px";
+    header.style.border = "1px solid rgb(255, 255, 255)";
+    gameContainer.appendChild(header);
+}
