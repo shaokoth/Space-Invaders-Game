@@ -249,3 +249,11 @@ function handlePlayerHit() {
     setTimeout(() => gameState.player.style.opacity = '1', 300);
     setupPlayer();
 }
+
+function updateLivesDisplay() {
+    const livesContainer = gameState.ecran.querySelector('.life').parentElement;
+    livesContainer.innerHTML = '';
+    for (let i = 0; i < gameState.lives; i++) {
+        livesContainer.appendChild(createLifeElement(i));
+    }
+}
