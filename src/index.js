@@ -104,3 +104,17 @@ function createLives() {
     }
     gameState.ecran.appendChild(livesContainer);
 }
+
+function createLifeElement(index) {
+    const life = document.createElement('img');
+    life.className = 'life';
+    life.src = "./img/life.png";
+    life.style.cssText = `
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        left: ${gameState.ecran.offsetWidth - (index + 1) * 40 - 30}px;
+        top: 2px;
+    `;
+    return life;
+}
