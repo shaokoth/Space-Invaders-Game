@@ -365,3 +365,8 @@ function resetGame() {
     gameLoop();
 }
 
+function positionPlayer() {
+    gameState.player.style.left = `${gameState.playerX}px`;
+    gameState.player.style.top = `${gameState.playerY}px`;
+}
+
