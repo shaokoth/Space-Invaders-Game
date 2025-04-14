@@ -422,3 +422,11 @@ function togglePause() {
     showPauseMenu();
     if (!gameState.isPaused) gameLoop();
 }
+
+function handleResize() {
+    gameState.playerX = Math.min(
+        Math.max(30, gameState.playerX),
+        gameState.ecran.offsetWidth - gameState.player.offsetWidth - 30
+    );
+    positionPlayer();
+}
