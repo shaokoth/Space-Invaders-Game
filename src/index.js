@@ -272,3 +272,37 @@ function endGame(success) {
     clearInterval(timer_death);
     showGameMenu(success);
 }
+
+function showGameMenu(isVictory) {
+    const menu = document.createElement('div');
+    menu.id = 'gameMenu';
+    menu.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        z-index: 1000;
+    `;
+
+    menu.innerHTML = `
+        <div style="background-color: transparent; border-radius: 8px; border: 2px solid rgb(255, 255, 255); height: 30%; width: 30%">
+        <div style="border: 2px solid rgb(255, 255, 255);">
+            <h2>${isVictory ? 'Victory!' : 'Game Over'}</h2>
+        </div>
+        <p>Score: ${gameState.score}</p>
+        <button style="cursor: pointer; border-radius: 8px; padding: 6px" id="restartButton">Restart</button>
+        </div>
+    `;
+
+    menu.querySelector('#restartButton').addEventListener('click', () => location.reload());
+
+    gameState.ecran.appendChild(menu);
+}
