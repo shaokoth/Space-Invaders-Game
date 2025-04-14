@@ -257,3 +257,12 @@ function updateLivesDisplay() {
         livesContainer.appendChild(createLifeElement(i));
     }
 }
+
+function updateGameState() {
+    gameState.countdown--;
+    if (gameState.countdown == 0) {
+        clearInterval(timer_death);
+        endGame(false);
+    }
+    document.getElementById('countdownValue').textContent = `${gameState.countdown}`;
+}
