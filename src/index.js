@@ -66,3 +66,9 @@ function setupHeader() {
     header.style.border = "1px solid rgb(255, 255, 255)";
     gameContainer.appendChild(header);
 }
+
+function createHUD() {
+    createCountdown();
+    createScore();
+    createLives();
+}
