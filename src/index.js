@@ -464,3 +464,60 @@ function gameLoop(timestamp = 0) {
 
     requestAnimationFrame(gameLoop);
 };
+
+
+drawStart();
+let presStart = setInterval(drawStart, 400);
+
+function setupEventListeners() {
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
+    window.addEventListener('resize', handleResize);
+}
+setupEventListeners();
+
+function handleKeyDown(e) {    
+    switch (e.key) {
+        case 'ArrowLeft':
+            gameState.keys.ArrowLeft = true;
+            break;
+        case 'ArrowRight':
+            gameState.keys.ArrowRight = true;
+            break;
+        case ' ':
+            gameState.keys.Space = true;
+            break;
+        case 'p':
+            gameState.keys.p = true;
+            break;
+        case 'r':
+            gameState.keys.r = true;
+            break;
+        case 'Enter':
+            gameState.keys.Enter = true;
+            break;
+    }
+}
+
+function handleKeyUp(e) {
+    switch (e.key) {
+        case 'ArrowLeft':
+            gameState.keys.ArrowLeft = false;
+            break;
+        case 'ArrowRight':
+            gameState.keys.ArrowRight = false;
+            break;
+        case ' ':
+            gameState.keys.Space = false;
+            break;
+        case 'p':
+            gameState.keys.p = false;
+            break;
+        case 'r':
+            gameState.keys.r = false;
+            break;
+        case 'Enter':
+            gameState.keys.Enter = false;
+            break;
+    }
+}
