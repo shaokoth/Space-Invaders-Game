@@ -94,3 +94,13 @@ function createScore() {
     scoreElement.style.cssText = 'position:absolute;top:10px;left:20px;font:bold 20px Arial;';
     gameState.ecran.appendChild(scoreElement);
 }
+
+function createLives() {
+    const livesContainer = document.createElement('div');
+    livesContainer.style.cssText = 'position:absolute;top:2px;left:30px;';
+    for (let i = 0; i < INITIAL_LIVES; i++) {
+        const life = createLifeElement(i);
+        livesContainer.appendChild(life);
+    }
+    gameState.ecran.appendChild(livesContainer);
+}
