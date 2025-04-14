@@ -266,3 +266,9 @@ function updateGameState() {
     }
     document.getElementById('countdownValue').textContent = `${gameState.countdown}`;
 }
+
+function endGame(success) {
+    gameState.isPaused = true;
+    clearInterval(timer_death);
+    showGameMenu(success);
+}
