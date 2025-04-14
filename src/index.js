@@ -452,3 +452,15 @@ function drawStart() {
         flash = false;
     } else flash = true;
 };
+
+function gameLoop(timestamp = 0) {
+    drawBackground();
+
+    if (!gameState.isPaused) {
+        updateInvaders(timestamp);
+        updateBullets();
+        checkCollisions();
+    }
+
+    requestAnimationFrame(gameLoop);
+};
