@@ -430,3 +430,25 @@ function handleResize() {
     );
     positionPlayer();
 }
+
+var flash = false;
+function drawStart() {
+    drawBackground();
+    if (flash) {
+        let text = "Press Enter To Start";
+        let fontSize = "24px";
+        let startDiv = document.createElement("div");
+        startDiv.style.position = "absolute";
+        startDiv.style.top = (gameContainer.clientHeight / 2 - 30) + "px";
+        startDiv.style.left = (gameContainer.clientWidth / 2 - 300) + "px";
+        startDiv.style.width = "600px";
+        startDiv.style.fontFamily = "'Press Start 2P', cursive";
+        startDiv.style.fontSize = fontSize;
+        startDiv.style.color = "white";
+        startDiv.style.textAlign = "center";
+        startDiv.innerText = text;
+        gameContainer.appendChild(startDiv);
+        setTimeout(() => { startDiv.remove(); }, 400);
+        flash = false;
+    } else flash = true;
+};
