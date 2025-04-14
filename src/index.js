@@ -118,3 +118,20 @@ function createLifeElement(index) {
     `;
     return life;
 }
+
+function createInvaders() {
+    const fragment = document.createDocumentFragment();
+
+    for (let row = 0; row < INVADER_ROWS; row++) {
+        for (let col = 0 + row; col < INVADER_COLS - row; col++) {
+            const invader = createInvaderElement(row, col);
+            fragment.appendChild(invader);
+            gameState.invaders.push({
+                element: invader,
+                x: col * 60 + 30,
+                y: row * 60 + 50
+            });
+        }
+    }
+    gameState.ecran.appendChild(fragment);
+}
