@@ -235,3 +235,17 @@ function checkCollision(obj1, obj2) {
         rect1.top > rect2.bottom
     );
 }
+
+function handlePlayerHit() {
+    gameState.lives--;
+    updateLivesDisplay();
+    if (gameState.lives <= 0) {
+        endGame(false);
+        return;
+    }
+
+    gameState.player.style.transition = 'opacity 0.3s';
+    gameState.player.style.opacity = '0.1';
+    setTimeout(() => gameState.player.style.opacity = '1', 300);
+    setupPlayer();
+}
