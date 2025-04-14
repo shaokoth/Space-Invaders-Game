@@ -198,3 +198,28 @@ function updateBullets() {
         return bullet.y < gameState.ecran.offsetHeight;
     });
 }
+
+function checkCollisions() {
+    // Player bullets vs invaders
+    gameState.bullets.forEach((bullet, bulletIndex) => {
+        gameState.invaders.forEach((invader, invaderIndex) => {
+            if (checkCollision(bullet.element, invader.element)) {
+                gameState.ecran.removeChild(bullet.element);
+                gameState.ecran.removeChild(invader.element);
+                gameState.bullets.splice(bulletIndex, 1);
+                gameState.invaders.splice(invaderIndex, 1);
+                gameState.score += 10;
+                document.getElementById('scoreValue').textContent = gameState.score;
+            }
+        });
+    });
+
+    // Invader bullets vs player
+    gameState.invaderBullets.forEach((bullet, index) => {
+        if (checkCollision(bullet.element, gameState.player)) {
+            handlePlayerHit();
+            gameState.ecran.removeChild(bullet.element);
+            gameState.invaderBullets.splice(index, 1);
+        }
+    });
+}
