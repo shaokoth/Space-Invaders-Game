@@ -521,3 +521,36 @@ function handleKeyUp(e) {
             break;
     }
 }
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (gameState.keys.ArrowLeft === true && !gameState.isPaused) {
+        gameState.playerX = Math.max(4, gameState.playerX - PLAYER_SPEED);
+    } else if (gameState.keys.ArrowRight === true && !gameState.isPaused) {
+        gameState.playerX = Math.min(
+            gameState.ecran.offsetWidth - gameState.player.offsetWidth - 4,
+            gameState.playerX + PLAYER_SPEED
+        );
+    }
+    if (gameState.keys.Space === true && !gameState.isPaused) {
+        fireBullet();
+    }
+    if (gameState.keys.p === true && !gameState.isPaused && gameStart) {
+        togglePause();
+    }
+    if (gameState.keys.r === true && !gameState.isPaused) {
+        location.reload();
+    }
+    if (gameState.keys.Enter === true) {
+        if (!gameStart) {
+            clearInterval(presStart);
+            timer_death = setInterval(updateGameState, 1000);
+            init();
+            gameLoop();
+            gameStart = true;
+        }
+    }
+    positionPlayer();
+}
+animate();
