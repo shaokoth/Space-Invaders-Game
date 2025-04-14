@@ -83,3 +83,14 @@ function createCountdown() {
     countdownElement.style.cssText = 'position:absolute;top:10px;left:140px;font:bold 20px Arial;';
     gameState.ecran.appendChild(countdownElement);
 }
+
+function createScore() {
+    const scoreElement = document.createElement('div');
+    scoreElement.id = 'score';
+    scoreElement.innerHTML = `
+        <p style="margin: 0; color: rgb(255, 255, 255);">
+            Score: <span id="scoreValue">${gameState.score}</span>
+        </p>`;
+    scoreElement.style.cssText = 'position:absolute;top:10px;left:20px;font:bold 20px Arial;';
+    gameState.ecran.appendChild(scoreElement);
+}
