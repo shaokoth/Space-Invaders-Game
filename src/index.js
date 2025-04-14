@@ -36,3 +36,6 @@ const gameState = {
         Enter: false
     }
 };
+
+gameState.player.width = 90;
+gameState.player.height = 50;
