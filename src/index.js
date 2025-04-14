@@ -72,3 +72,14 @@ function createHUD() {
     createScore();
     createLives();
 }
+
+function createCountdown() {
+    const countdownElement = document.createElement('div');
+    countdownElement.id = 'countdown';
+    countdownElement.innerHTML = `
+        <p style="margin: 0; color: rgb(255, 255, 255);">
+            Timer: <span id="countdownValue">${gameState.countdown}</span>
+        </p>`;
+    countdownElement.style.cssText = 'position:absolute;top:10px;left:140px;font:bold 20px Arial;';
+    gameState.ecran.appendChild(countdownElement);
+}
