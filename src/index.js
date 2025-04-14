@@ -135,3 +135,17 @@ function createInvaders() {
     }
     gameState.ecran.appendChild(fragment);
 }
+
+function createInvaderElement(row, col) {
+    const isSpecial = row === col || col === INVADER_COLS - row - 1;
+    const invader = document.createElement('img');
+    invader.src = isSpecial ? './img/enemy2.png' : './img/invader.png';
+    invader.style.cssText = `
+        position: absolute;
+        width: ${isSpecial ? 30 : 40}px;
+        height: ${isSpecial ? 30 : 40}px;
+        left: ${col * 60 + 30}px;
+        top: ${row * 60 + 50}px;
+    `;
+    return invader;
+}
