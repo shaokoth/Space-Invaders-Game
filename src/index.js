@@ -39,3 +39,13 @@ const gameState = {
 
 gameState.player.width = 90;
 gameState.player.height = 50;
+
+// Initialization
+function init() {
+    setupPlayer();
+    setupHeader();
+    createHUD();
+    createInvaders();
+    updateGameState();
+    gameLoop();
+}
