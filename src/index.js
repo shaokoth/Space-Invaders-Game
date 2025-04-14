@@ -391,3 +391,27 @@ function fireBullet() {
     });
     gameState.lastFireTime = Date.now();
 }
+
+function invaderFiring() {
+    if (gameState.invaders.length === 0) {
+        endGame(true);
+        return;
+    }
+    const invader = gameState.invaders[Math.floor(Math.random() * gameState.invaders.length)];
+    const bullet = document.createElement('div');
+    bullet.style.cssText = `
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: red;
+        left: ${parseInt(invader.element.style.left) + 22}px;
+        top: ${parseInt(invader.element.style.top) + 50}px;
+    `;
+
+    gameState.ecran.appendChild(bullet);
+    gameState.invaderBullets.push({
+        element: bullet,
+        y: parseInt(invader.element.style.top) + 50
+    });
+}
