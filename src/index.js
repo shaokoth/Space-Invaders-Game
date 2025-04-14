@@ -178,3 +178,23 @@ function updateInvaders(timestamp) {
         });
     }
 }
+
+function updateBullets() {
+    // Update player bullets
+    gameState.bullets = gameState.bullets.filter(bullet => {
+        bullet.y -= BULLET_SPEED;
+        bullet.element.style.top = `${bullet.y}px`;
+        if (parseInt(bullet.element.style.top) <= 0) {
+            bullet.element.remove();
+            return false;
+        }
+        return bullet.y > 0;
+    });
+
+    // Update invader bullets
+    gameState.invaderBullets = gameState.invaderBullets.filter(bullet => {
+        bullet.y += INVADER_BULLET_SPEED;
+        bullet.element.style.top = `${bullet.y}px`;
+        return bullet.y < gameState.ecran.offsetHeight;
+    });
+}
