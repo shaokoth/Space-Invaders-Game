@@ -108,7 +108,7 @@ function createLives() {
 function createLifeElement(index) {
     const life = document.createElement('img');
     life.className = 'life';
-    life.src = "./img/life.png";
+    life.src = "./images/life.png";
     life.style.cssText = `
         position: absolute;
         width: 30px;
@@ -139,7 +139,7 @@ function createInvaders() {
 function createInvaderElement(row, col) {
     const isSpecial = row === col || col === INVADER_COLS - row - 1;
     const invader = document.createElement('img');
-    invader.src = isSpecial ? './img/enemy2.png' : './img/invader.png';
+    invader.src = isSpecial ? './images/enemy.png' : './images/enemy.png';
     invader.style.cssText = `
         position: absolute;
         width: ${isSpecial ? 30 : 40}px;
@@ -429,6 +429,11 @@ function handleResize() {
         gameState.ecran.offsetWidth - gameState.player.offsetWidth - 30
     );
     positionPlayer();
+}
+
+let gameStart = false;
+function drawBackground() {
+    gameContainer.style.backgroundColor = "black";
 }
 
 var flash = false;
